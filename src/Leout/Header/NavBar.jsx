@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import { MdAccountCircle, MdFavoriteBorder } from "react-icons/md";
 import { IoBagAddOutline } from "react-icons/io5";
+import logo from '../../../public/Screenshot 2023-08-06 134206.png'
 
 const NavBar = () => {
     const { user, logOut } = useContext(authContext);
@@ -29,7 +30,7 @@ const NavBar = () => {
 
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <Link to={'/'}><img src={logo} alt="" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

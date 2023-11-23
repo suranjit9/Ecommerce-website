@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link  } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { authContext } from "../../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const SingUp = () => {
     const {googleSingup, userCreate} = useContext(authContext);
@@ -49,6 +50,9 @@ const SingUp = () => {
     
     return (
         <div className="min-w-full min-h-screen flex items-center justify-center px-5 py-5">
+            <Helmet>
+                <title>Sing Up</title>
+            </Helmet>
             <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" >
                 <div className="md:flex w-full">
                     <div className="hidden md:block w-1/2 bg-indigo-500 py-10 px-10">

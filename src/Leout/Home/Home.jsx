@@ -1,9 +1,11 @@
+import HomeSlider from "../Slider/HomeSlider";
 
 
 const Home = () => {
     return (
         <div>
-            <h1 className="text-5xl text-center">Home</h1>
+           
+            <HomeSlider></HomeSlider>
         </div>
     );
 };

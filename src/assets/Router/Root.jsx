@@ -4,7 +4,7 @@ import NavBar from "../../Leout/Header/NavBar";
 
 const Root = () => {
     return (
-        <div>
+        <div className="w-screen mx-auto">
             <NavBar></NavBar>
             <Outlet></Outlet>
         </div>

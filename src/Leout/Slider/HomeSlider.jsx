@@ -1,5 +1,4 @@
 
-import img1 from '../../../public/phono-slider-1.webp';
 import img2 from '../../../public/phono-slider-2.webp';
 import img3 from '../../../public/phono-slider-3.webp';
 
@@ -19,6 +18,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 export default function HomeSlider() {
     return (
         <>
+            <div className='max-w-full'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -56,13 +56,14 @@ export default function HomeSlider() {
                         {/* Slider Img */}
                         
                         </div>
-                    <img src={img3} alt="" />
+                    <img  src={img3} alt="" />
                 </SwiperSlide>
                 
                 
 
 
             </Swiper>
+            </div>
         </>
     );
 }

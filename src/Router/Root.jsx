@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "../../Leout/Header/NavBar";
+import NavBar from "../Leout/Header/NavBar";
+
 
 
 const Root = () => {

@@ -1,19 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import { MdAccountCircle, MdFavoriteBorder } from "react-icons/md";
 import { IoBagAddOutline } from "react-icons/io5";
 import logo from '../../../public/Screenshot 2023-08-06 134206.png'
+import useAddtoCArd from "../../Hook/useAddtoCArd";
 
 const NavBar = () => {
-    const [productLength, setProductLenght] = useState('');
-    useEffect(
-        ()=>{
-            fetch('http://localhost:5000/addToCard')
-            .then(res => res.json())
-            .then(data => setProductLenght(data))
-        }
-        ,[])
+    const [addToCardLenth] = useAddtoCArd();
+    
     const { user, logOut } = useContext(authContext);
     const link = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
@@ -52,7 +47,9 @@ const NavBar = () => {
             </div>
             <div className="navbar-end">
                 <div className="flex gap-1 mr-2">
-                    <h1 className="text-xl"><IoBagAddOutline /></h1><sup className="text-red-600 font-semibold text-sm  ">{productLength.length}</sup>
+                    <Link to={`/addtocardPage`}>
+                        <h1 className="text-xl"><IoBagAddOutline /></h1><sup className="text-red-600 font-semibold text-sm  ">{addToCardLenth.length}</sup>
+                    </Link>
                     <h1 className="text-xl"><MdFavoriteBorder /></h1><sup className="text-red-600 font-semibold text-sm">0</sup>
                 </div>
                 {

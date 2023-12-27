@@ -5,7 +5,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { IoEyeOutline } from "react-icons/io5";
 import { CiStar } from "react-icons/ci";
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 const Product = ({ pro }) => {
     const { name, price, Supplier, rating, type, photo, description } = pro;
@@ -56,7 +56,7 @@ const Product = ({ pro }) => {
                                     <button
                                         // className={`btn ${currentButton === 'addToCart' ? 'btn-active' : ''}`}
                                         // // onClick={() => setCurrentButton('addToCart')}
-                                        className='hidden md:block md:hover:block'
+                                        className='btn hidden md:block md:hover:block'
                                         onClick={addtoCard}
                                         
                                         
@@ -67,14 +67,14 @@ const Product = ({ pro }) => {
                                     <button
                                         // className={`btn ${currentButton === 'viewProduct' ? 'btn-active' : ''}`}
                                         // onClick={() => setCurrentButton('viewProduct')}
-                                        className='hidden md:block  md:hover:block'
+                                        className='btn hidden md:block  md:hover:block'
                                     >
                                         <IoEyeOutline></IoEyeOutline>
                                     </button>
                                     <button
                                         // className={`btn ${currentButton === 'addLove' ? 'btn-active' : ''}`}
                                         // onClick={() => setCurrentButton('addLove')}
-                                        className='hidden md:block  md:hover:block'
+                                        className='btn hidden md:block  md:hover:block'
                                     >
                                         <CiStar className='text-2xl '></CiStar>
                                     </button>

@@ -9,7 +9,8 @@ import SingUp from "../Leout/Header/SingUp";
 import AddProduct from "../AddProduct/Addptoduct";
 import Productdata from "../Leout/Product/Productdata";
 import ProductUpdat from "../Admin/ProductUpdat/ProductUpdat";
-import Product from "../Leout/Product/Product";
+// import Product from "../Leout/Product/Product";
+import AddToCard from "../Leout/AddToCard/AddToCard";
 
 
 
@@ -47,8 +48,8 @@ import Product from "../Leout/Product/Product";
             loader:()=>fetch('http://localhost:5000/AddProduct')
           },
           {
-            path: '/product:id',
-            element:<Product></Product>
+            path: '/addtocardPage',
+            element:<AddToCard></AddToCard>
             
           }
       ],

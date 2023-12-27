@@ -27,7 +27,7 @@ const AddProduct = () => {
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'success!',
-                        text: 'Add a Coffee Succesfully',
+                        text: 'Add a product Succesfully',
                         icon: 'success',
                         confirmButtonText: 'Ok'
                       })
@@ -115,7 +115,7 @@ const AddProduct = () => {
                         </label>
                     </div>
                 </div>
-                <input type="submit" value="Add Coffee" className="btn btn-block" />
+                <input type="submit" value="Add Product" className="btn btn-block" />
 
             </form>
         </div>

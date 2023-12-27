@@ -8,6 +8,8 @@ import Login from "../Leout/Header/Login";
 import SingUp from "../Leout/Header/SingUp";
 import AddProduct from "../AddProduct/Addptoduct";
 import Productdata from "../Leout/Product/Productdata";
+import ProductUpdat from "../Admin/ProductUpdat/ProductUpdat";
+import Product from "../Leout/Product/Product";
 
 
 
@@ -20,6 +22,7 @@ import Productdata from "../Leout/Product/Productdata";
         {
           path: "/",
           element: <Home/>,
+          loader:async ()=>fetch('http://localhost:5000/AddProduct')
         },
         {
             path:'/login',
@@ -36,7 +39,17 @@ import Productdata from "../Leout/Product/Productdata";
           {
             path: '/Product',
             element: <Productdata></Productdata>,
+            // loader:()=>fetch('http://localhost:5000/AddProduct')
+          },
+          {
+            path: '/ProductUpdat',
+            element: <ProductUpdat></ProductUpdat>,
             loader:()=>fetch('http://localhost:5000/AddProduct')
+          },
+          {
+            path: '/product:id',
+            element:<Product></Product>
+            
           }
       ],
     },

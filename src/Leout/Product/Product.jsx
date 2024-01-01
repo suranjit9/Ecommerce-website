@@ -7,48 +7,54 @@ import { CiStar } from "react-icons/ci";
 import { useState } from 'react';
 // import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAddtoCArd from '../../Hook/useAddtoCArd';
+import { Link } from 'react-router-dom';
 const Product = ({ pro }) => {
-    const { name, price, Supplier, rating, type, photo, description } = pro;
-
+    const { _id, name, price, Supplier, rating, type, photo, description } = pro;
     const [currentButton, setCurrentButton] = useState('');
     const [showButtons, setShowButtons] = useState(false);
-    
-    const addtoCard = ()=>{
-        const Product = { name, price, Supplier, rating, type, photo, description };  
-        fetch ('http://localhost:5000/addToCard',{
-            method:'POST',
-            headers:{
+    const [refetch] = useAddtoCArd();
+    const addtoCard = () => {
+        const Product = { name, price, Supplier, rating, type, photo, description };
+        fetch('http://localhost:5000/addToCard', {
+            method: 'POST',
+            headers: {
                 'content-type': 'application/json'
             },
-            body:JSON.stringify(Product)
+            body: JSON.stringify(Product)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if (data.insertedId) {
-                Swal.fire({
-                    title: 'success!',
-                    text: 'Add To card Succesfully',
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                  })
+            .then(res => res.json())
+            .then(data => {
+
+                refetch()
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'success!',
+                        text: 'Add To card Succesfully',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                }
+
             }
-        
+            )
     }
-        )
-    }
-    
+
 
     return (
         <div className="rounded-lg mt-3"
             onMouseEnter={() => setShowButtons(true)}
             onMouseLeave={() => setShowButtons(false)}
         >
+            
             <div className="card  bg-base-100 shadow-xl">
 
-
+            
                 <div className='relative'>
-                    <div className=' absolute pl-[25%] pt-[45%]'>
+                <Link to={`/singalProduct/${_id}`}>
+                    <figure><img className='rounded-lg h-52 object-cover' src={photo} alt="Product" /></figure>
+                    </Link>
+                    <div className=' absolute inset-x-0 bottom-0 h-16'>
                         {
                             showButtons && (
                                 <div className="flex justify-center gap-3 mt-1 ">
@@ -58,19 +64,22 @@ const Product = ({ pro }) => {
                                         // // onClick={() => setCurrentButton('addToCart')}
                                         className='btn hidden md:block md:hover:block'
                                         onClick={addtoCard}
-                                        
-                                        
+
+
                                     >
                                         <FaCartShopping></FaCartShopping>
                                     </button>
                                     {/* </Link> */}
-                                    <button
-                                        // className={`btn ${currentButton === 'viewProduct' ? 'btn-active' : ''}`}
-                                        // onClick={() => setCurrentButton('viewProduct')}
-                                        className='btn hidden md:block  md:hover:block'
-                                    >
-                                        <IoEyeOutline></IoEyeOutline>
-                                    </button>
+                                    
+                                        <button
+                                            // className={`btn ${currentButton === 'viewProduct' ? 'btn-active' : ''}`}
+                                            // onClick={() => setCurrentButton('viewProduct')}
+                                            className='btn hidden md:block  md:hover:block'
+                                            onClick={() => document.getElementById('my_modal_4').showModal()}
+                                        >
+                                            <IoEyeOutline></IoEyeOutline>
+                                        </button>
+                                    {/* </Link> */}
                                     <button
                                         // className={`btn ${currentButton === 'addLove' ? 'btn-active' : ''}`}
                                         // onClick={() => setCurrentButton('addLove')}
@@ -82,10 +91,9 @@ const Product = ({ pro }) => {
                             )
                         }
                     </div>
-                    <figure><img className='rounded-lg h-52 object-cover' src={photo} alt="Product" /></figure>
-
+                    
                 </div>
-
+                <Link to={`/singalProduct/${_id}`}>
 
                 <div className="p-3">
                     <div className='flex justify-between mt-4'>
@@ -106,15 +114,35 @@ const Product = ({ pro }) => {
                         <p className='font-extralight'>Type: {type}</p>
                     </div>
                     <div className='sm:text-center  mt-3 md:hidden'>
-                        <button
-                            className={`btn btn-circle w-full ${currentButton === 'addToCart' ? 'btn-active' : ''}`}
-                            onClick={() => setCurrentButton('addToCart')}
-                        >
-                            Buy Now
-                        </button>
+                        <Link to={`/singalProduct/${_id}`}>
+                            <button
+                                className={`btn btn-circle w-full ${currentButton === 'addToCart' ? 'btn-active' : ''}`}
+                                onClick={() => setCurrentButton('addToCart')}
+                            >
+                                Buy Now
+                            </button>
+                        </Link>
+
                     </div>
                 </div>
+                </Link>
             </div>
+            {/* You can open the modal using document.getElementById('ID').showModal() method */}
+            
+            <dialog id="my_modal_4" className="modal">
+                <div className="modal-box w-11/12 max-w-5xl">
+                    <h3 className="font-bold text-lg">Heloo</h3>
+                    <img className='w-28' src={photo} alt="" />
+                    <p className="py-4">Click the button below to close</p>
+                    <div className="modal-action">
+                        <form method="dialog">
+                            {/* if there is a button, it will close the modal */}
+                            <button className="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+            
         </div>
     );
 };

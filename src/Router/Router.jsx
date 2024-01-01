@@ -8,9 +8,13 @@ import Login from "../Leout/Header/Login";
 import SingUp from "../Leout/Header/SingUp";
 import AddProduct from "../AddProduct/Addptoduct";
 import Productdata from "../Leout/Product/Productdata";
-import ProductUpdat from "../Admin/ProductUpdat/ProductUpdat";
+
 // import Product from "../Leout/Product/Product";
 import AddToCard from "../Leout/AddToCard/AddToCard";
+import AddCardProduct from "../Leout/AddToCard/AddCardProduct";
+import SingalProduct from "../Leout/Product/SingalProduct";
+import TaC from "../Leout/Catogory/TaC";
+import ManCloth from "../Leout/Catogory/ManCloth";
 
 
 
@@ -23,7 +27,14 @@ import AddToCard from "../Leout/AddToCard/AddToCard";
         {
           path: "/",
           element: <Home/>,
-          loader:async ()=>fetch('http://localhost:5000/AddProduct')
+          children:[
+            {
+              path: '/Product',
+              element: <Productdata></Productdata>,
+              // loader:()=>fetch('http://localhost:5000/AddProduct')
+            },
+          ],
+          loader: ()=>fetch('http://localhost:5000/AddProduct')
         },
         {
             path:'/login',
@@ -37,19 +48,21 @@ import AddToCard from "../Leout/AddToCard/AddToCard";
             path: '/addProduct',
             element: <AddProduct></AddProduct>
           },
+          
           {
-            path: '/Product',
-            element: <Productdata></Productdata>,
-            // loader:()=>fetch('http://localhost:5000/AddProduct')
-          },
-          {
-            path: '/ProductUpdat',
-            element: <ProductUpdat></ProductUpdat>,
-            loader:()=>fetch('http://localhost:5000/AddProduct')
+            path: '/addToCard/:id',
+            element: <AddCardProduct></AddCardProduct>,
+            //
           },
           {
             path: '/addtocardPage',
             element:<AddToCard></AddToCard>
+            
+          },
+          {
+            path:'/singalProduct/:id',
+            element: <SingalProduct></SingalProduct>,
+            loader:({params})=>fetch(`http://localhost:5000/AddProduct/${params.id}`)
             
           }
       ],

@@ -1,10 +1,10 @@
+import { useLoaderData } from "react-router-dom";
+import Product from "../Product/Product";
 
-import { useLoaderData } from 'react-router-dom';
-import Product from '../Product/Product';
 
-const ManCloth = () => {
+const WmanClothe = () => {
     const data = useLoaderData();
-    const eletoData = data.filter((a)=> a.type === 'Man Clothing');
+    const eletoData = data.filter((a)=> a.type === 'Woman Clothing');
     return (
         <div className=" w-5/6 mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 ">
             {
@@ -17,4 +17,4 @@ const ManCloth = () => {
     );
 };
 
-export default ManCloth;
+export default WmanClothe;

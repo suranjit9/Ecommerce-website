@@ -31,6 +31,7 @@ const Catogtilist = () => {
           Toy
         </NavLink>
         <NavLink
+        to={'/Man Clothing'}
           role="tab"
           className={activeTab === 2 ? 'tab tab-active' : 'tab'}
           onClick={() => handleTabClick(2)}
@@ -38,6 +39,7 @@ const Catogtilist = () => {
           Man Clothing
         </NavLink>
         <NavLink
+        to={'/Woman Clothing'}
           role="tab"
           className={activeTab === 3 ? 'tab tab-active' : 'tab'}
           onClick={() => handleTabClick(3)}

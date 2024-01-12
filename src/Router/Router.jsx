@@ -14,8 +14,9 @@ import AddToCard from "../Leout/AddToCard/AddToCard";
 import AddCardProduct from "../Leout/AddToCard/AddCardProduct";
 import SingalProduct from "../Leout/Product/SingalProduct";
 
-import Catogtilist from "../Leout/Product/Catogtilist";
 import Toy from "../Leout/Catogory/Toy";
+import ManCloth from "../Leout/Catogory/ManCloth";
+import WmanClothe from "../Leout/Catogory/WmanClothe";
 
 
 
@@ -40,6 +41,16 @@ const router = createBrowserRouter([
             element: <Toy></Toy>,
             loader: () => fetch('http://localhost:5000/AddProduct')
 
+          },
+          {
+            path: '/Man Clothing',
+            element: <ManCloth></ManCloth>,
+            loader: () => fetch('http://localhost:5000/AddProduct')
+          },
+          {
+            path: '/Woman Clothing',
+            element: <WmanClothe></WmanClothe>,
+            loader: () => fetch('http://localhost:5000/AddProduct')
           }
 
         ],

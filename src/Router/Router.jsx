@@ -17,6 +17,7 @@ import SingalProduct from "../Leout/Product/SingalProduct";
 import Toy from "../Leout/Catogory/Toy";
 import ManCloth from "../Leout/Catogory/ManCloth";
 import WmanClothe from "../Leout/Catogory/WmanClothe";
+import FutherProduct from "../Leout/FutherProduct/FutherProduct";
 
 
 
@@ -91,6 +92,11 @@ const router = createBrowserRouter([
         element: <SingalProduct></SingalProduct>,
         loader: ({ params }) => fetch(`http://localhost:5000/AddProduct/${params.id}`)
 
+      },
+      {
+        path:'/Fether',
+        element:<FutherProduct></FutherProduct>,
+        loader: () => fetch('http://localhost:5000/AddProduct'),
       }
     ],
   },

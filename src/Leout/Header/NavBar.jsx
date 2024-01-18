@@ -4,26 +4,31 @@ import { authContext } from "../../AuthProvider/AuthProvider";
 import { MdAccountCircle, MdFavoriteBorder } from "react-icons/md";
 import { IoBagAddOutline } from "react-icons/io5";
 import logo from '../../../public/Screenshot 2023-08-06 134206.png'
-import useAddtoCArd from "../../Hook/useAddtoCArd";
+// import useAddtoCArd from "../../Hook/useAddtoCArd";
 
 const NavBar = () => {
     const [productLengt, setProductLenght] = useState('');
-    const [data] = useAddtoCArd();
-    // console.log(data)
+    // const [data] = useAddtoCArd();
+    const { user, logOut } = useContext(authContext);
     
+    console.log(user?.email);
     useEffect(
         ()=>{
             fetch('http://localhost:5000/addToCard')
             .then(res => res.json())
             .then(data => {
-                // console.log(data)
-                setProductLenght(data)
+                console.log(data.userEmail)
+                console.log(user.email)
+                // setProductLenght(data)
+                if (data.userEmail == user.email) {
+                    setProductLenght(data);
+                }
             })
            
         }
         ,[])
+        
     
-    const { user, logOut } = useContext(authContext);
     const link = <>
         <li> <NavLink to={'/'}>Home</NavLink></li>
         {user && 
@@ -37,6 +42,7 @@ const NavBar = () => {
     const hendalSingOut = () => {
         logOut();
     }
+    
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">

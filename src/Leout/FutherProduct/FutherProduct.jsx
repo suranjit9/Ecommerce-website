@@ -1,5 +1,5 @@
 
-import { useLoaderData } from "react-router-dom";
+
 import Product from "../Product/Product";
 import { useEffect, useState } from "react";
 

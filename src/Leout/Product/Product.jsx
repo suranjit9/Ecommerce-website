@@ -4,29 +4,34 @@ import { IoMdStar } from "react-icons/io"
 import { FaCartShopping } from "react-icons/fa6";
 import { IoEyeOutline } from "react-icons/io5";
 import { CiStar } from "react-icons/ci";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 // import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAddtoCArd from '../../Hook/useAddtoCArd';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../AuthProvider/AuthProvider';
 const Product = ({ pro }) => {
     const { _id, name, price, Supplier, rating, type, photo, description } = pro;
     const [currentButton, setCurrentButton] = useState('');
     const [showButtons, setShowButtons] = useState(false);
-    const [refetch] = useAddtoCArd();
+    // const [refetch] = useAddtoCArd();
+    const user = useContext(authContext);
+    // console.log(user)
     const addtoCard = () => {
-        const Product = { name, price, Supplier, rating, type, photo, description };
+        
+        const product = {userEmail:user.user.email , name, price, Supplier, rating, type, photo, description };
+        // console.log(Product);
         fetch('http://localhost:5000/addToCard', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(Product)
+            body: JSON.stringify(product)
         })
             .then(res => res.json())
             .then(data => {
 
-                refetch()
+                // refetch()
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'success!',

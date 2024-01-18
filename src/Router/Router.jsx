@@ -18,6 +18,7 @@ import Toy from "../Leout/Catogory/Toy";
 import ManCloth from "../Leout/Catogory/ManCloth";
 import WmanClothe from "../Leout/Catogory/WmanClothe";
 import FutherProduct from "../Leout/FutherProduct/FutherProduct";
+import Product from "../Leout/Product/Product";
 
 
 
@@ -72,6 +73,7 @@ const router = createBrowserRouter([
         loader: () => fetch('http://localhost:5000/AddProduct')
 
       },
+      
       {
         path: '/addProduct',
         element: <AddProduct></AddProduct>

@@ -8,25 +8,23 @@ import logo from '../../../public/Screenshot 2023-08-06 134206.png'
 
 const NavBar = () => {
     const [productLengt, setProductLenght] = useState('');
+    
     // const [data] = useAddtoCArd();
     const { user, logOut } = useContext(authContext);
     
-    console.log(user?.email);
+    console.log('hello',user.email)
     useEffect(
         ()=>{
-            fetch('http://localhost:5000/addToCard')
+            fetch(`http://localhost:5000/addToCard?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data.userEmail)
-                console.log(user.email)
-                // setProductLenght(data)
-                if (data.userEmail == user.email) {
-                    setProductLenght(data);
-                }
+               
+                setProductLenght(data)
+                
             })
            
         }
-        ,[])
+        ,[user?.email])
         
     
     const link = <>

@@ -6,14 +6,14 @@ import app from "../Firbase/Firbase.config";
 
 
 
-export const authContext = createContext(null);
+
 const auth = getAuth(app);
 const AuthProvider = ({children}) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState('');
     const [loder, setLoder]= useState(true);
     const googleProvider = new GoogleAuthProvider();
 
-
+    console.log('Auth',user);
     const userCreate =(email, password)=>{
         setLoder(true);
         return createUserWithEmailAndPassword(auth, email, password);
@@ -39,6 +39,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, currentUsere =>{
             setUser(currentUsere);
+            console.log('currntUser',currentUsere );
             setLoder(false);
         });
         return ()=>{unsubscribe();} 
@@ -65,3 +66,5 @@ AuthProvider.propTypes = {
     children:PropTypes.node,
 }
 export default AuthProvider;
+// eslint-disable-next-line react-refresh/only-export-components
+export const authContext = createContext(null);
